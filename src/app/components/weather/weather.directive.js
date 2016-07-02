@@ -21,12 +21,11 @@
     return directive;
 
     /** @ngInject */
-    function WeatherController(moment) {
+    function WeatherController() {
       var vm = this;
       vm.loaded=false;
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (result) {
-          console.log(result)
           weatherService.checkWeatherCoordsHourly(result.coords.latitude, result.coords.longitude).then(function (result) {
             vm.hours = result.data;
             vm.loaded=true;
@@ -36,7 +35,6 @@
         weatherService.checkWeatherCoordsHourly("51.50722","­0.12750").then(function (result) {
           vm.hours = result.data;
           vm.loaded=true;
-          console.log(main.weatherLondon)
         });
       }
     }

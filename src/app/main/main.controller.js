@@ -3,32 +3,30 @@
 
   angular
     .module('decidzTest')
-    .controller('MainController', MainController);
+    .controller('MainController',  mainController);
 
   /** @ngInject */
-  function MainController($timeout,weatherService) {
-    var main = this;
-main.loaded=false;
+  function  mainController($timeout,weatherService,$log) {
+    var  main = this;
+     main.loaded=false;
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(result){
         weatherService.saveTemperature(result.coords.latitude,result.coords.longitude).then(
           function(res){
-            console.log("saved: "+res);
+            $log.info("saved: "+res);
           }
           );
         weatherService.checkWeatherCoords(result.coords.latitude,result.coords.longitude).then(function(result){
-          main.weatherCurrentLocation=result.data;
-          main.loaded=true;
+           main.weatherCurrentLocation=result.data;
+           main.loaded=true;
 
         });
       });
     }else {
       weatherService.checkWeatherCoords("51.50722","­0.12750").then(function(result){
-        main.weatherCurrentLocation=result.data;
-        main.loaded=true;
-
-        console.log( main.weatherLondon)
+         main.weatherCurrentLocation=result.data;
+         main.loaded=true;
       });
     }
   }

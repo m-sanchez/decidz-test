@@ -13,7 +13,6 @@
             callback:"JSON_CALLBACK"
           }).then(function(result){
             deferred.resolve(result.data.daily);
-            console.log(result)
           });
 
           return promise;
@@ -30,7 +29,6 @@
             callback:"JSON_CALLBACK"
           }).then(function(result){
             deferred.resolve(result.data.hourly);
-            console.log(result)
           });
           return promise;
         },
@@ -45,7 +43,6 @@
             callback:"JSON_CALLBACK"
           }).then(function(result){
             deferred.resolve(result.data.currently.temperature);
-            console.log(result)
             localStorage.temperature=result.data.currently.temperature;
           });
           return promise;
