@@ -1,0 +1,29 @@
+<div class="container">
+
+
+  <br/>
+  <div class="jumbotron text-center">
+
+    <p class="lead">
+      <img src="assets/images/logo-1.png" alt="Decidz"><br/>
+      Technical Challenge
+    </p>
+    <br/>
+
+    <h3 class="text-left" >Weather in your location today and the next 7 days:</h3>
+    <div class="loader" ng-show="!main.loaded">
+      <span class="dot dot_1"></span>
+      <span class="dot dot_2"></span>
+      <span class="dot dot_3"></span>
+      <span class="dot dot_4"></span>
+    </div>
+    <div ng-show="main.loaded">
+      <p class="text-left" ng-repeat="day in main.weatherCurrentLocation">{{$index+1}}.- {{day.summary}} </p>
+      </div>
+
+    <weather></weather>
+  </div>
+
+
+
+</div>

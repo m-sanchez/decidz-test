@@ -1,0 +1,13 @@
+<h3 class="text-left">Weather in your location next 48 hours</h3>
+<div class="loader" ng-show="!vm.loaded">
+  <span class="dot dot_1"></span>
+  <span class="dot dot_2"></span>
+  <span class="dot dot_3"></span>
+  <span class="dot dot_4"></span>
+</div>
+<div ng-show="vm.loaded">
+  <p ng-repeat="hour in vm.hours" class="text-left">
+    <b>{{hour.time* 1000 | date:'dd/MM/yyyy HH:mm'}} </b> {{hour.summary}}, Wind Speed: {{hour.windSpeed}}
+  </p>
+</div>
+
